@@ -50,4 +50,4 @@ cmdline.txt：树莓派启动时将所有内核运行参数传递给Linux内核�
 不可以换成其他的格式，因为用SD卡启动Linux的话，必须是FAT32格式。
 
 ### /dev/sdc1 中的 kernel 启动之后为什么会加载 /dev/sdc2 中的 init 程序？
-在kernel启动之后会调用一个rest_init函数启动了三个进程（idle、kernel_init、kthreadd）。init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 加载init程序。它是Linux内核开始建立起进程概念时第一个通过kernel_thread产生的进程，其开始在内核态执行，Linux内核也经历了从内核态到用户态的特权级转变，所有的用户进程都由有该进程派生出来。
+在kernel进入c语言阶段后，会开始执行start_kernel函数，它负责进行kernel正式运行前各个功能的初始化，最后末尾调用了一个rest_init函数启动了三个进程（idle、kernel_init、kthreadd）。init进程由idle通过kernel_thread创建，在内核空间完成初始化后, 加载init程序。它是Linux内核开始建立起进程概念时第一个通过kernel_thread产生的进程，其开始在内核态执行，Linux内核也经历了从内核态到用户态的特权级转变，所有的用户进程都由有该进程派生出来。
