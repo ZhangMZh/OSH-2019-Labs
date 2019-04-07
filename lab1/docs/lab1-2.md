@@ -54,5 +54,5 @@ cmdline.txt：树莓派启动时将所有内核运行参数传递给Linux内核�
 
 ### /dev/sdc2 中的 init 正常工作至少需要打开 Linux Kernel 的哪些编译选项？
 #### [*] System V IPC
-系统的进程间通信Inter Process Communication，它用于处理器在程序之间同步和交换信息，如果不选这项，很多程序运行不起来。
+系统的进程间通信Inter Process Communication，它用于处理器在程序之间同步和交换信息，如果不选这项，init程序运行不起来。
 
