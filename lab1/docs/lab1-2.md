@@ -56,3 +56,5 @@ cmdline.txt：树莓派启动时将所有内核运行参数传递给Linux内核�
 #### [*] System V IPC
 系统的进程间通信Inter Process Communication，它用于处理器在程序之间同步和交换信息，如果不选这项，init程序运行不起来。
 
+### 开机两分钟后，init 程序退出， Linux Kernel 为什么会 panic？
+initial程序中频繁使用sleep()函数延时，系统调度会被破坏，造成进程之间的不同步，导致kernel panic。
