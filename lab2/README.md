@@ -49,13 +49,13 @@ if(j > 0)
 }
 ```
 
-![](/home/mz_zhang/lab2/images/2.png)
+![](images/2.png)
 
 ### 错误处理
 
 上网查得`chdir`、`fork`、`exec`等函数出错时的返回值，然后根据返回值进行相关的错误处理。
 
-![](/home/mz_zhang/lab2/images/7.png)
+![](images/7.png)
 
 ## 管道与多命令
 
@@ -103,7 +103,7 @@ if(j > 0)
         }
         return SUCCESS;
     }
-![](/home/mz_zhang/lab2/images/3.png)
+![](images/3.png)
 
 ## 环境变量
 
@@ -115,7 +115,7 @@ if(j > 0)
 
 支持用`echo $NAME`来查询环境变量，直接调用`getenv`便可实现。
 
-![](/home/mz_zhang/lab2/images/1.png)
+![](images/1.png)
 
 ## 文件重定向
 
@@ -149,7 +149,7 @@ O_TRUNC如果文件存在，并且以只写/读写方式打开，则清空文件
     	dup2(fd,STDIN_FILENO);
     	close(fd);
     }
-![](/home/mz_zhang/lab2/images/4.png)
+![](images/4.png)
 
 ## 其他功能
 
@@ -157,7 +157,7 @@ O_TRUNC如果文件存在，并且以只写/读写方式打开，则清空文件
 
 调用`getenv(HOME)`，没什么可说的……
 
-![](/home/mz_zhang/lab2/images/5.png)
+![](images/5.png)
 
 ### jobs控制
 
@@ -182,7 +182,7 @@ O_TRUNC如果文件存在，并且以只写/读写方式打开，则清空文件
     	return TRUE;
     }
     else return FALSE;
-![](/home/mz_zhang/lab2/images/6.png)
+![](images/6.png)
 
 ## Makefile
 
