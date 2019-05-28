@@ -86,7 +86,7 @@ while(TRUE)
     {
         strcat(req_buf, buff);
         req_len = req_len + len;
-        if(req_len >= 4 && req_buf[req_len-4] == '\r' && req_buf[req_len-3] == 			'\n' && req_buf[req_len-2] == '\r' && req_buf[req_len-1] == '\n') break;
+        if(req_len >= 4 && req_buf[req_len-4] == '\r' && req_buf[req_len-3] == '\n' && req_buf[req_len-2] == '\r' && req_buf[req_len-1] == '\n') break;
     }
 }
 ```
