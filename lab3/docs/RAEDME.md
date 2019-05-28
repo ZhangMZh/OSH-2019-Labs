@@ -33,7 +33,7 @@ int threadpool_addtask(threadpool_t *pool, int clnt_sock);//增加请求到等�
 
 由于程序是个死循环，因此不需要对线程池进行销毁，没有写线程池的销毁函数。
 
-线程池结构体定义：pthread_cond_broadcast(&(pool->queue_not_full));
+线程池结构体定义：
 
 ```
 typedef struct
