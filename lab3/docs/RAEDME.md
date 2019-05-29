@@ -97,22 +97,33 @@ while(TRUE)
 
 ## 读取请求资源
 
-用`fopen`打开之前获得的路径上的文件，若打开失败返回404，再用`fseek()`函数获取文件结束的地方，然后计算文件的大小，重置文件指针，再使用`fread()`读取资源。
+先用`access()`判断解析出的的文件或文件夹是否存在，再判断是否是文件夹，如果不是文件夹，用`fopen`打开之前获得的路径上的文件，若打开失败返回500，再用`fseek()`函数获取文件结束的地方，然后计算文件的大小，重置文件指针，再使用`fread()`读取资源。
 
 ```
-FILE *fp = fopen(filepath, "r");
-if(fp)
+if(parse_request(req_buf, req_len, filepath))
 {
-    fseek(fp, 0, SEEK_END);
-    filelen = ftell(fp);
-    filecontent = (char*) malloc((filelen + 1) * sizeof(char));
-    fseek(fp,0,SEEK_SET);
-    fread(filecontent, 1, filelen, fp);
-    filecontent[filelen] = '\0';
-    fclose(fp);
-    status = 200;
-} 
-else status = 404;
+    struct stat buf;
+    stat(filepath, &buf);
+    if(access(filepath, F_OK) == -1) status = 404;
+    else if(S_ISDIR(buf.st_mode)) status = 404;
+    else
+    {
+        FILE *fp = fopen(filepath, "r");
+        if(fp)
+        {
+            fseek(fp, 0, SEEK_END);
+            filelen = ftell(fp);
+            filecontent = (char*) malloc((filelen + 1) * sizeof(char));
+            fseek(fp,0,SEEK_SET);
+            fread(filecontent, 1, filelen, fp);
+            filecontent[filelen] = '\0';
+            fclose(fp);
+            status = 200;
+        } 
+        else status = 500;
+    }
+}
+else status = 500;
 ```
 
 ## 返回资源内容
